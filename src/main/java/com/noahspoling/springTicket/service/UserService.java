@@ -1,7 +1,6 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.lib.user.User;
-import org.springframework.stereotype.Component;
+import com.noahspoling.springTicket.lib.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,10 +8,10 @@ import java.util.List;
 
 @Service
 public class UserService {
-    public List<User> getUsers() {
-        List<User> users = new ArrayList<User>();
+    public List<Users> getUsers() {
+        List<Users> users = new ArrayList<Users>();
         for (int i = 1; i < 6; i++) {
-            User user = new User("exampleEmail" + i + "@website.com", "password");
+            Users user = new Users("exampleEmail" + i + "@website.com", "password");
             user.setId(i);
             users.add(user);
         }
