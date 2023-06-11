@@ -1,7 +1,7 @@
 package com.noahspoling.springTicket.controllers;
 
-import com.noahspoling.springTicket.lib.user.User;
-import com.noahspoling.springTicket.services.UserService;
+import com.noahspoling.springTicket.entity.Users;
+import com.noahspoling.springTicket.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return userService.getUsers();
     }
 }

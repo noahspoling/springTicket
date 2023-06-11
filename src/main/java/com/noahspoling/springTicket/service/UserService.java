@@ -1,6 +1,6 @@
-package com.noahspoling.springTicket.services;
+package com.noahspoling.springTicket.service;
 
-import com.noahspoling.springTicket.lib.Users;
+import com.noahspoling.springTicket.entity.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

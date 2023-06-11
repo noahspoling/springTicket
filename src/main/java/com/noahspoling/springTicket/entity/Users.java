@@ -1,11 +1,17 @@
-package com.noahspoling.springTicket.lib;
+package com.noahspoling.springTicket.entity;
 
-import javax.persistence.*;
-import javax.persistence.Table;
-import java.util.Date;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+//NOTE JAKARTA FOR SPRING 3>
+//EVERYTHING ELSE JAVAX
 @Entity
 @Table(name = "users")
 public class Users {
@@ -19,10 +25,8 @@ public class Users {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private long id;
-    @Column(name = "email", length = 255, nullable = false, unique = true)
+    private long userId;
     private String email;
-    @Column(name = "password", length = 255, nullable = false, unique = false)
     private String password;
 
 
@@ -60,11 +64,11 @@ public class Users {
         this.setRoleId(roleId);
     }*/
     public void setId(long id) {
-        this.id = id;
+        this.userId = id;
     }
 
     public long getId() {
-        return this.id;
+        return this.userId;
     }
 
     public void setEmail(String email) {
@@ -108,7 +112,7 @@ public class Users {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + (this.id == 0 ? "null" : this.id) +
+                "id=" + (this.userId == 0 ? "null" : this.userId) +
                 ", email='" + (this.email == null ? "null" : this.email) + '\'' +
                 ", password='" + (this.password == null ? "null" : this.password) + '\'' +/*
                 ", roleId=" + (this.roleId == 0 ? "null" : this.roleId) +

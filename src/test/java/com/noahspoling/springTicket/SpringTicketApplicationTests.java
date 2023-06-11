@@ -8,6 +8,7 @@ class SpringTicketApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
