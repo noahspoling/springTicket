@@ -34,9 +34,7 @@ public class Users {
     //This might not be a good practice but the set Methods handles input requirements
 
     //No Argument Contructor
-    public Users() {
-
-    }
+    public Users() {}
     //Constructors for handling logins.
     public Users(String email, String password) {
         this.setEmail(email);

@@ -23,5 +23,26 @@ public class Role {
     private long roleId;
     @Nonnull
     private String roleName;
+    public Role() { };
+    public Role(String roleName) {
+        this.setRoleName(roleName);
+    }
+    public Role(long roleId, String roleName) {
+        this.setRoleId(roleId);
+        this.setRoleName(roleName);
+    }
+    public long getRoleId() {
+        return roleId;
+    }
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
+    }
+    @Nonnull
+    public String getRoleName() {
+        return roleName;
+    }
 
+    public void setRoleName(@Nonnull String roleName) {
+        this.roleName = roleName;
+    }
 }

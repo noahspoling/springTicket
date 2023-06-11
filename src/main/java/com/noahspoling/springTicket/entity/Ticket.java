@@ -17,14 +17,17 @@ public class Ticket {
             generator = "ticket_sequence"
     )
     private long ticketId;
+    //Many tickets have one category
     @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
     private String ticketName;
     private String ticketDescription;
+    //Many tickets have one creator
     @ManyToOne
     @JoinColumn(name = "createdBy", referencedColumnName = "userId")
     private Users userCreated;
+    //Many tickets have one resolver
     @ManyToOne
     @JoinColumn(name = "resolvedBy", referencedColumnName = "userId")
     private Users userResolved;
@@ -32,10 +35,77 @@ public class Ticket {
     public Ticket() {
 
     }
-    public Ticket(long categoryId, String ticketName, String ticketDescription, long createdBy) {
-
+    //For creating unresolved ticket
+    public Ticket(Category category, String ticketName, String ticketDescription, Users userCreated) {
+        this.setCategory(category);
+        this.setTicketName(ticketName);
+        this.setTicketDescription(ticketDescription);
+        this.setUserCreated(userCreated);
     }
 
+    //Getting existing unresolved ticket
+    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, Users userCreated) {
+        this.setTicketId(ticketId);
+        this.setCategory(category);
+        this.setTicketName(ticketName);
+        this.setTicketDescription(ticketDescription);
+        this.setUserCreated(userCreated);
+    }
+    //Getting existing resolved ticket
+    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, Users userCreated, Users userResolved) {
+        this.setTicketId(ticketId);
+        this.setCategory(category);
+        this.setTicketName(ticketName);
+        this.setTicketDescription(ticketDescription);
+        this.setUserCreated(userCreated);
+        this.setUserResolved(userResolved);
+    }
 
+    public long getTicketId() {
+        return this.ticketId;
+    }
 
+    public void setTicketId(long ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getTicketName() {
+        return ticketName;
+    }
+
+    public void setTicketName(String ticketName) {
+        this.ticketName = ticketName;
+    }
+
+    public String getTicketDescription() {
+        return ticketDescription;
+    }
+
+    public void setTicketDescription(String ticketDescription) {
+        this.ticketDescription = ticketDescription;
+    }
+
+    public Users getUserCreated() {
+        return userCreated;
+    }
+
+    public void setUserCreated(Users userCreated) {
+        this.userCreated = userCreated;
+    }
+
+    public Users getUserResolved() {
+        return userResolved;
+    }
+
+    public void setUserResolved(Users userResolved) {
+        this.userResolved = userResolved;
+    }
 }
