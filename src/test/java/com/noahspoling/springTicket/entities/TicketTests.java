@@ -2,7 +2,7 @@ package com.noahspoling.springTicket.entities;
 
 
 import com.noahspoling.springTicket.entity.Ticket;
-import com.noahspoling.springTicket.entity.Users;
+import com.noahspoling.springTicket.entity.User;
 import com.noahspoling.springTicket.entity.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TicketTest {
     private Ticket ticket;
-    private Users userCreated, userResolved;
+    private User userCreated, userResolved;
     private Category category;
 
     @BeforeEach
     void setUp() {
-        userCreated = new Users("created@example.com", "createdPassword");
-        userResolved = new Users("resolved@example.com", "resolvedPassword");
+        userCreated = new User("created@example.com", "createdPassword");
+        userResolved = new User("resolved@example.com", "resolvedPassword");
         category = new Category(); // assuming Category has a no-arg constructor
         ticket = new Ticket(category, "Test Ticket", "Test Description", userCreated);
     }
@@ -76,14 +76,14 @@ class TicketTest {
 
     @Test
     void testSetUserCreated() {
-        Users newUserCreated = new Users("newCreated@example.com", "newCreatedPassword");
+        User newUserCreated = new User("newCreated@example.com", "newCreatedPassword");
         ticket.setUserCreated(newUserCreated);
         assertEquals(newUserCreated, ticket.getUserCreated());
     }
 
     @Test
     void testSetUserResolved() {
-        Users newUserResolved = new Users("newResolved@example.com", "newResolvedPassword");
+        User newUserResolved = new User("newResolved@example.com", "newResolvedPassword");
         ticket.setUserResolved(newUserResolved);
         assertEquals(newUserResolved, ticket.getUserResolved());
     }

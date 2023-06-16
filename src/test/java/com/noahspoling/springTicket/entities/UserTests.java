@@ -1,18 +1,18 @@
 package com.noahspoling.springTicket.entities;
 
 
-import com.noahspoling.springTicket.entity.Users;
+import com.noahspoling.springTicket.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UsersTest {
-    private Users user;
+class UserTest {
+    private User user;
 
     @BeforeEach
     void setUp() {
-        user = new Users();
+        user = new User();
     }
 
     @Test
@@ -22,14 +22,14 @@ class UsersTest {
 
     @Test
     void testArgConstructor() {
-        user = new Users("test@example.com", "testPassword");
+        user = new User("test@example.com", "testPassword");
         assertEquals("test@example.com", user.getEmail());
         assertEquals("testPassword", user.getPassword());
     }
 
     @Test
     void testFullArgConstructor() {
-        user = new Users(1L, "test@example.com", "testPassword");
+        user = new User(1L, "test@example.com", "testPassword");
         assertEquals(1L, user.getId());
         assertEquals("test@example.com", user.getEmail());
         assertEquals("testPassword", user.getPassword());

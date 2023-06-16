@@ -1,7 +1,7 @@
 package com.noahspoling.springTicket.controllers;
 
-import com.noahspoling.springTicket.entity.Users;
-import com.noahspoling.springTicket.service.UserService;
+import com.noahspoling.springTicket.entity.User;
+import com.noahspoling.springTicket.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,25 +24,25 @@ public class UserController {
     }
 
     @GetMapping(path = "/")
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping(path = "/{id}")
     @ResponseBody
-    public Optional<Users> getUsers(@PathVariable("id") long id) {
+    public Optional<User> getUsers(@PathVariable("id") long id) {
         return userService.getUser(id);
     }
 
     @PostMapping(path = "/")
     @ResponseBody()
-    public void addUser(@RequestBody Users user) {
+    public void addUser(@RequestBody User user) {
         userService.addUser(user);
     }
 
     @PutMapping(path = "/")
     @ResponseBody()
-    public void updateUser(@RequestBody Users user, @RequestBody Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void updateUser(@RequestBody User user, @RequestBody Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         userService.updateUser(user, params);
     }
 

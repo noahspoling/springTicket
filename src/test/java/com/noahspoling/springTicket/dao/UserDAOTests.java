@@ -1,6 +1,6 @@
 package com.noahspoling.springTicket.dao;
 
-import com.noahspoling.springTicket.entity.Users;
+import com.noahspoling.springTicket.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
@@ -36,24 +36,24 @@ class UserDAOTest {
 
     @Test
     void testGet() {
-        Users expectedUser = new Users();
-        when(entityManager.find(Users.class, 1L)).thenReturn(expectedUser);
+        User expectedUser = new User();
+        when(entityManager.find(User.class, 1L)).thenReturn(expectedUser);
 
-        Optional<Users> result = dao.get(1L);
+        Optional<User> result = dao.get(1L);
         assertTrue(result.isPresent());
         assertEquals(expectedUser, result.get());
     }
 
     @Test
     void testGetAll() {
-        Users user1 = new Users();
-        Users user2 = new Users();
-        List<Users> expectedUsers = Arrays.asList(user1, user2);
+        User user1 = new User();
+        User user2 = new User();
+        List<User> expectedUsers = Arrays.asList(user1, user2);
 
         when(entityManager.createQuery("SELECT e from User e")).thenReturn(query);
         when(query.getResultList()).thenReturn(expectedUsers);
 
-        List<Users> result = dao.getAll();
+        List<User> result = dao.getAll();
         assertEquals(expectedUsers, result);
     }
 

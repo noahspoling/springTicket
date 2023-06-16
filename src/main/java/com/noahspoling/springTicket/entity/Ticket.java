@@ -26,17 +26,17 @@ public class Ticket {
     //Many tickets have one creator
     @ManyToOne
     @JoinColumn(name = "createdBy", referencedColumnName = "userId")
-    private Users userCreated;
+    private User userCreated;
     //Many tickets have one resolver
     @ManyToOne
     @JoinColumn(name = "resolvedBy", referencedColumnName = "userId")
-    private Users userResolved;
+    private User userResolved;
 
     public Ticket() {
 
     }
     //For creating unresolved ticket
-    public Ticket(Category category, String ticketName, String ticketDescription, Users userCreated) {
+    public Ticket(Category category, String ticketName, String ticketDescription, User userCreated) {
         this.setCategory(category);
         this.setTicketName(ticketName);
         this.setTicketDescription(ticketDescription);
@@ -44,7 +44,7 @@ public class Ticket {
     }
 
     //Getting existing unresolved ticket
-    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, Users userCreated) {
+    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, User userCreated) {
         this.setTicketId(ticketId);
         this.setCategory(category);
         this.setTicketName(ticketName);
@@ -52,7 +52,7 @@ public class Ticket {
         this.setUserCreated(userCreated);
     }
     //Getting existing resolved ticket
-    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, Users userCreated, Users userResolved) {
+    public Ticket(long ticketId, Category category, String ticketName, String ticketDescription, User userCreated, User userResolved) {
         this.setTicketId(ticketId);
         this.setCategory(category);
         this.setTicketName(ticketName);
@@ -93,19 +93,19 @@ public class Ticket {
         this.ticketDescription = ticketDescription;
     }
 
-    public Users getUserCreated() {
+    public User getUserCreated() {
         return userCreated;
     }
 
-    public void setUserCreated(Users userCreated) {
+    public void setUserCreated(User userCreated) {
         this.userCreated = userCreated;
     }
 
-    public Users getUserResolved() {
+    public User getUserResolved() {
         return userResolved;
     }
 
-    public void setUserResolved(Users userResolved) {
+    public void setUserResolved(User userResolved) {
         this.userResolved = userResolved;
     }
 }

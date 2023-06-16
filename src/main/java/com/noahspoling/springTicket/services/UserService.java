@@ -1,11 +1,9 @@
-package com.noahspoling.springTicket.service;
+package com.noahspoling.springTicket.services;
 
 import com.noahspoling.springTicket.dao.UserDAO;
-import com.noahspoling.springTicket.entity.Users;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.noahspoling.springTicket.entity.User;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,20 +17,20 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public Optional<Users> getUser(long id) {
+    public Optional<User> getUser(long id) {
         if(userDAO.get(id).isPresent()) {
             return userDAO.get(id);
         }
         return null;
     }
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return userDAO.getAll();
     }
-    public void addUser(Users user) {
+    public void addUser(User user) {
         userDAO.save(user);
     }
-    public void updateUser(Users user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void updateUser(User user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         userDAO.update(user, params);
     }
-    public void delete(Users user) { userDAO.delete(user); }
+    public void delete(User user) { userDAO.delete(user); }
 }

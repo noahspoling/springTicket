@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 //EVERYTHING ELSE JAVAX
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @SequenceGenerator(
             name = "user_sequence",
@@ -34,14 +34,14 @@ public class Users {
     //This might not be a good practice but the set Methods handles input requirements
 
     //No Argument Contructor
-    public Users() {}
+    public User() {}
     //Constructors for handling logins.
-    public Users(String email, String password) {
+    public User(String email, String password) {
         this.setEmail(email);
         this.setPassword(password);
     }
 
-    public Users(long id, String email, String password) {
+    public User(long id, String email, String password) {
         this.setId(id);
         this.setEmail(email);
         this.setPassword(password);
