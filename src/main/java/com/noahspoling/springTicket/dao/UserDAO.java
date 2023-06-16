@@ -1,24 +1,25 @@
 package com.noahspoling.springTicket.dao;
 
 import com.noahspoling.springTicket.entity.Users;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
-import org.hibernate.SessionFactory;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.lang.reflect.Field;
+import java.util.*;
 import java.util.function.Consumer;
 
 @Repository
 public class UserDAO implements DAO<Users> {
 
+
+    private EntityManagerFactory entityManagerFactory;
     @Autowired
     private EntityManager entityManager;
+
+    public UserDAO () {
+        this.setEntityManager(entityManager);
+    }
 
     @Override
     public Optional<Users> get(long id) {
@@ -37,9 +38,17 @@ public class UserDAO implements DAO<Users> {
     }
 
     @Override
-    public void update(Users user, String[] params) {
-        user.setEmail(Objects.requireNonNull(params[0], "Email cannot be null"));
-        user.setPassword(Objects.requireNonNull(params[1], "Password cannot be null"));
+    public void update(Users users, String[] params) {
+
+    }
+
+    @Override
+    public void update(Users user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+        for(Map.Entry<String, Object> entry: params.entrySet()) {
+            Field field = Users.class.getDeclaredField(entry.getKey());
+            field.setAccessible(true);
+            field.set(user, entry.getValue());
+        }
         executeInsideTransaction(entityManager -> entityManager.merge(user));
     }
 
@@ -56,6 +65,11 @@ public class UserDAO implements DAO<Users> {
     @Override
     public Users signup() {
         return null;
+    }
+
+    @Override
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     private void executeInsideTransaction(Consumer<EntityManager> action) {

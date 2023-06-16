@@ -1,2 +1,4 @@
-package com.noahspoling.springTicket.controllers;public class UserControllerTests {
+package com.noahspoling.springTicket.controllers;
+
+public class UserControllerTests {
 }

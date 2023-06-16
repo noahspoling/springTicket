@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-//NOTE JAKARTA FOR SPRING 3>
+//NOTE JAKARTA FOR SPRING 3 >
 //EVERYTHING ELSE JAVAX
 @Entity
 @Table(name = "users")
