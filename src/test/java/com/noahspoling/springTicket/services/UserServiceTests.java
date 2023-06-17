@@ -1,6 +1,6 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.dao.UserDAO;
+import com.noahspoling.springTicket.dao.UserIDAO;
 import com.noahspoling.springTicket.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +14,10 @@ import java.util.Optional;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserServiceTest {
+class UserIServiceTest {
 
     @Mock
-    private UserDAO dao;
+    private UserIDAO dao;
     private UserService service;
 
     @BeforeEach
@@ -31,7 +31,7 @@ class UserServiceTest {
         User expectedUser = new User();
         when(dao.get(1L)).thenReturn(Optional.of(expectedUser));
 
-        Optional<User> result = service.getUser(1L);
+        Optional<User> result = service.get(1L);
         assertTrue(result.isPresent());
         assertEquals(expectedUser, result.get());
     }
@@ -40,7 +40,7 @@ class UserServiceTest {
     void testGetUserNotFound() {
         when(dao.get(1L)).thenReturn(Optional.empty());
 
-        Optional<User> result = service.getUser(1L);
+        Optional<User> result = service.get(1L);
         assertNull(result);
     }
 
@@ -52,7 +52,7 @@ class UserServiceTest {
 
         when(dao.getAll()).thenReturn(expectedUsers);
 
-        List<User> result = service.getUsers();
+        List<User> result = service.getAll();
         assertEquals(expectedUsers, result);
     }
 

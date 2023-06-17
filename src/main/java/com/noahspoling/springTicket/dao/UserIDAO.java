@@ -3,18 +3,14 @@ package com.noahspoling.springTicket.dao;
 import com.noahspoling.springTicket.entity.User;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.function.Consumer;
 
 @Repository
-public class UserDAO implements DAO<User> {
+public class UserIDAO implements IDAO<User> {
 
-
-    //private EntityManagerFactory entityManagerFactory;
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -35,10 +31,6 @@ public class UserDAO implements DAO<User> {
         entityManager.persist(user);
     }
 
-    @Override
-    public void update(User user, String[] params) {
-
-    }
 
     @Transactional
     @Override
@@ -56,27 +48,4 @@ public class UserDAO implements DAO<User> {
     public void delete(User user) {
         entityManager.remove(user);
     }
-
-    @Override
-    public User login() {
-        return null;
-    }
-
-    @Override
-    public User signup() {
-        return null;
-    }
-
-    /*private void executeInsideTransaction(Consumer<EntityManager> action) {
-        EntityTransaction transaction = entityManager.getTransaction();
-        try {
-            transaction.begin();
-            action.accept(entityManager);
-            transaction.commit();
-        }
-        catch (RuntimeException e) {
-            transaction.rollback();
-            throw e;
-        }
-    }*/
 }

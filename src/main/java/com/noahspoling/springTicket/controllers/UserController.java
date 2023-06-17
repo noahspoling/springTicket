@@ -25,25 +25,25 @@ public class UserController {
 
     @GetMapping(path = "/")
     public List<User> getUsers() {
-        return userService.getUsers();
+        return userService.getAll();
     }
 
     @GetMapping(path = "/{id}")
     @ResponseBody
     public Optional<User> getUsers(@PathVariable("id") long id) {
-        return userService.getUser(id);
+        return userService.get(id);
     }
 
     @PostMapping(path = "/")
     @ResponseBody()
     public void addUser(@RequestBody User user) {
-        userService.addUser(user);
+        userService.save(user);
     }
 
     @PutMapping(path = "/")
     @ResponseBody()
     public void updateUser(@RequestBody User user, @RequestBody Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
-        userService.updateUser(user, params);
+        userService.update(user, params);
     }
 
     @DeleteMapping(path = "/{id}")

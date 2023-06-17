@@ -1,6 +1,6 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.dao.UserDAO;
+import com.noahspoling.springTicket.dao.UserIDAO;
 import com.noahspoling.springTicket.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +9,30 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements IService<User>{
 
-    UserDAO userDAO;
+    private UserIDAO userDAO;
 
-    public UserService(UserDAO userDAO) {
+    public UserService(UserIDAO userDAO) {
         this.userDAO = userDAO;
     }
 
-    public Optional<User> getUser(long id) {
-        if(userDAO.get(id).isPresent()) {
-            return userDAO.get(id);
+    public Optional<User> get(long id) {
+        if(this.userDAO.get(id).isPresent()) {
+            return this.userDAO.get(id);
         }
         return null;
     }
-    public List<User> getUsers() {
-        return userDAO.getAll();
+    public List<User> getAll() {
+        return this.userDAO.getAll();
     }
-    public void addUser(User user) {
-        userDAO.save(user);
+    public void save(User user) {
+        this.userDAO.save(user);
     }
-    public void updateUser(User user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
-        userDAO.update(user, params);
+    public void update(User user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+        this.userDAO.update(user, params);
     }
-    public void delete(User user) { userDAO.delete(user); }
+    public void delete(User user) {
+        this.userDAO.delete(user);
+    }
 }

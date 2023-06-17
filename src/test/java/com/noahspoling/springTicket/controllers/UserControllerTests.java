@@ -43,7 +43,7 @@ class UserControllerTest {
         User user2 = new User();
         List<User> users = Arrays.asList(user1, user2);
 
-        when(service.getUsers()).thenReturn(users);
+        when(service.getAll()).thenReturn(users);
 
         mockMvc.perform(get("/api/v1/user/"))
                 .andExpect(status().isOk());
@@ -53,7 +53,7 @@ class UserControllerTest {
     void testGetUser() throws Exception {
         User user = new User();
 
-        when(service.getUser(anyLong())).thenReturn(Optional.of(user));
+        when(service.get(anyLong())).thenReturn(Optional.of(user));
 
         mockMvc.perform(get("/api/v1/user/1"))
                 .andExpect(status().isOk());
