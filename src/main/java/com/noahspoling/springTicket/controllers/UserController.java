@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping(path = "/{id}")
     @ResponseBody
-    public Optional<User> getUsers(@PathVariable("id") long id) {
+    public Optional<User> getUser(@PathVariable("id") long id) {
         return userService.get(id);
     }
 
@@ -40,15 +40,19 @@ public class UserController {
         userService.save(user);
     }
 
-    @PutMapping(path = "/")
+    @PutMapping(path = "/{id}")
     @ResponseBody()
-    public void updateUser(@RequestBody User user, @RequestBody Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void updateUser(@PathVariable("id") long id,
+                           @RequestBody User user,
+                           @RequestBody Map<String, Object> params)
+                            throws NoSuchFieldException, IllegalAccessException {
         userService.update(user, params);
     }
 
     @DeleteMapping(path = "/{id}")
     @ResponseBody()
-    public void deleteUser(@PathVariable("id") long id) {
-
+    public void deleteUser(@PathVariable("id") long id,
+                           @RequestBody User user) {
+        userService.delete(user);
     }
 }

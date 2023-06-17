@@ -5,7 +5,6 @@ package com.noahspoling.springTicket.entity;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "role")
 public class Role {
