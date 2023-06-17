@@ -1,6 +1,6 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.dao.UserIDAO;
+import com.noahspoling.springTicket.dao.UserDAO;
 import com.noahspoling.springTicket.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserIServiceTest {
 
     @Mock
-    private UserIDAO dao;
+    private UserDAO dao;
     private UserService service;
 
     @BeforeEach

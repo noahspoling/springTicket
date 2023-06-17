@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class TicketIDAO implements IDAO<Ticket> {
+public class TicketDAO implements IDAO<Ticket> {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -35,6 +35,7 @@ public class TicketIDAO implements IDAO<Ticket> {
         entityManager.persist(ticket);
     }
 
+    @Transactional
     @Override
     public void update(Ticket ticket, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         for(Map.Entry<String, Object> entry: params.entrySet()) {
@@ -45,6 +46,7 @@ public class TicketIDAO implements IDAO<Ticket> {
         entityManager.merge(ticket);
     }
 
+    @Transactional
     @Override
     public void delete(Ticket ticket) {
         entityManager.remove(ticket);

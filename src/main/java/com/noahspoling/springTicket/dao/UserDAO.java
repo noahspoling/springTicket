@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 @Repository
-public class UserIDAO implements IDAO<User> {
+public class UserDAO implements IDAO<User> {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -16,7 +16,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserIDAOTest {
+class UserDAOTest {
 
     @Mock
     private EntityManager entityManager;
@@ -24,13 +24,13 @@ class UserIDAOTest {
     private EntityTransaction transaction;
     @Mock
     private Query query;
-    private UserIDAO dao;
+    private UserDAO dao;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         when(entityManager.getTransaction()).thenReturn(transaction);
-        dao = new UserIDAO();
+        dao = new UserDAO();
     }
 
     @Test

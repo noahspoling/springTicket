@@ -1,6 +1,6 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.dao.UserIDAO;
+import com.noahspoling.springTicket.dao.UserDAO;
 import com.noahspoling.springTicket.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +11,9 @@ import java.util.Optional;
 @Service
 public class UserService implements IService<User>{
 
-    private UserIDAO userDAO;
+    private UserDAO userDAO;
 
-    public UserService(UserIDAO userDAO) {
+    public UserService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 

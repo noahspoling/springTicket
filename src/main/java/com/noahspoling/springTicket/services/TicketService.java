@@ -1,10 +1,9 @@
 package com.noahspoling.springTicket.services;
 
-import com.noahspoling.springTicket.dao.TicketIDAO;
+import com.noahspoling.springTicket.dao.TicketDAO;
 import com.noahspoling.springTicket.entity.Ticket;
 import org.springframework.stereotype.Service;
 
-import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,9 +11,9 @@ import java.util.Optional;
 @Service
 public class TicketService implements IService<Ticket>{
 
-    TicketIDAO ticketDAO;
+    TicketDAO ticketDAO;
 
-    public TicketService(TicketIDAO ticketDAO) {
+    public TicketService(TicketDAO ticketDAO) {
         this.ticketDAO = ticketDAO;
     }
 
