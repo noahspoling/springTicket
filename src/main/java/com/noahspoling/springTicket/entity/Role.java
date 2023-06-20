@@ -31,17 +31,17 @@ public class Role {
         this.setRoleName(roleName);
     }
     public long getRoleId() {
-        return roleId;
+        return this.roleId;
     }
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
-    @Nonnull
+
     public String getRoleName() {
-        return roleName;
+        return this.roleName;
     }
 
-    public void setRoleName(@Nonnull String roleName) {
+    public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class UserService implements IService<User>{
+public class UserService implements IService<User, User>{
 
     private UserDAO userDAO;
 
@@ -29,7 +29,7 @@ public class UserService implements IService<User>{
     public void save(User user) {
         this.userDAO.save(user);
     }
-    public void update(User user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void update(Optional<User> user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         this.userDAO.update(user, params);
     }
     public void delete(User user) {

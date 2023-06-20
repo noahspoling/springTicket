@@ -1,6 +1,7 @@
 package com.noahspoling.springTicket.dao;
 
 import com.noahspoling.springTicket.entity.Ticket;
+import com.noahspoling.springTicket.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -37,7 +38,7 @@ public class TicketDAO implements IDAO<Ticket> {
 
     @Transactional
     @Override
-    public void update(Ticket ticket, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void update(Optional<User> ticket, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         for(Map.Entry<String, Object> entry: params.entrySet()) {
             Field field = Ticket.class.getDeclaredField(entry.getKey());
             field.setAccessible(true);

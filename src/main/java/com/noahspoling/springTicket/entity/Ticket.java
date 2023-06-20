@@ -17,6 +17,7 @@ public class Ticket {
             generator = "ticket_sequence"
     )
     private long ticketId;
+
     //Many tickets have one category
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -86,7 +87,7 @@ public class Ticket {
     }
 
     public String getTicketDescription() {
-        return ticketDescription;
+        return this.ticketDescription;
     }
 
     public void setTicketDescription(String ticketDescription) {
@@ -94,7 +95,7 @@ public class Ticket {
     }
 
     public User getUserCreated() {
-        return userCreated;
+        return this.userCreated;
     }
 
     public void setUserCreated(User userCreated) {
@@ -102,7 +103,7 @@ public class Ticket {
     }
 
     public User getUserResolved() {
-        return userResolved;
+        return this.userResolved;
     }
 
     public void setUserResolved(User userResolved) {

@@ -34,7 +34,7 @@ public class UserDAO implements IDAO<User> {
 
     @Transactional
     @Override
-    public void update(User user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
+    public void update(Optional<User> user, Map<String, Object> params) throws NoSuchFieldException, IllegalAccessException {
         for(Map.Entry<String, Object> entry: params.entrySet()) {
             Field field = User.class.getDeclaredField(entry.getKey());
             field.setAccessible(true);

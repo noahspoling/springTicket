@@ -1,5 +1,6 @@
 package com.noahspoling.springTicket.controllers;
 
+import com.noahspoling.springTicket.dto.TicketRequest;
 import com.noahspoling.springTicket.entity.Ticket;
 import com.noahspoling.springTicket.entity.User;
 import com.noahspoling.springTicket.services.TicketService;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "api/v1/ticket")
 public class TicketController {
-    private  final TicketService ticketService;
+    private final TicketService ticketService;
 
     @Autowired
     public TicketController(TicketService ticketService) {
@@ -33,14 +34,14 @@ public class TicketController {
 
     @PostMapping(path = "/")
     @ResponseBody
-    public void addTicket(@RequestBody Ticket ticket) {
-        ticketService.save(ticket);
+    public void addTicket(@RequestBody TicketRequest ticketRequest) {
+        return null;
     }
 
     @PutMapping(path = "/{id}")
     @ResponseBody
     public void updateTicket(@PathVariable("id") long id,
-                             @RequestBody Ticket ticket,
+                             @RequestBody Optional<User> ticket,
                              @RequestBody Map<String, Object> param)
             throws NoSuchFieldException, IllegalAccessException {
         ticketService.update(ticket, param);

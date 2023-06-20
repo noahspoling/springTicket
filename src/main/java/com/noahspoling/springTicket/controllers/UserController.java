@@ -43,9 +43,9 @@ public class UserController {
     @PutMapping(path = "/{id}")
     @ResponseBody()
     public void updateUser(@PathVariable("id") long id,
-                           @RequestBody User user,
                            @RequestBody Map<String, Object> params)
                             throws NoSuchFieldException, IllegalAccessException {
+        Optional<User> user = userService.get(id);
         userService.update(user, params);
     }
 
